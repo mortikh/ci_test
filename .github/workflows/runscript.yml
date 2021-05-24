@@ -1,8 +1,5 @@
 name: SQL Script
-on: 
-  push:
-    branches:
-      - 'script_dev'
+on: push
 
 jobs:
   build:
