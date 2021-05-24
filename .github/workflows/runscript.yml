@@ -2,7 +2,7 @@ name: SQL Script
 on: 
   push:
     branches:
-      - script_dev
+      - "script_dev"
 
 jobs:
   build:
