@@ -8,5 +8,13 @@ jobs:
     name: Run
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: mysql --user rfamro --host mysql-rfam-public.ebi.ac.uk --port 4497 --database Rfam < script.sql
+      - name: Checkout to branch
+        uses: actions/checkout@v2
+      
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v6.2
+      
+      - name: File was changed
+        if: contains(steps.changed-files.outputs.modified_files, 'script.sql')
+        run: mysql --user rfamro --host mysql-rfam-public.ebi.ac.uk --port 4497 --database Rfam < script.sql
